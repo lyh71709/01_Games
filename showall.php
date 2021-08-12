@@ -66,7 +66,31 @@
                 <!-- Price -->
                 
                 <b>Price</b>:
-                <?php echo $find_rs['Price']?>
+                <?php 
+                    if(echo $find_rs['Price'] == 0
+                    {
+                    ?>
+                    
+                    <p>Price: Free 
+                        <?php
+                            if($find_rs['In App'] == 1)
+                            {
+                                ?>
+                                (In App Purchases)
+                                <?php
+                            }// end In App if
+                    
+                <?php
+                    } // end price if
+                       
+                       else {
+                           
+                           ?>
+                        <b>Price:</b> $<?php echo $find_rs['Price'] ?>
+                           
+                        <?php
+                        } // end price else (displays cost)
+                    ?>
                 
                 
                 
