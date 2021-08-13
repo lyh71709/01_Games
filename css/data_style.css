@@ -146,11 +146,15 @@ a.side:hover {color:#8a1737; }
     flex-wrap: nowrap;
 }
 
-
-
-
-
-
-
-
-
+.star-ratings-sprite {
+  background: url("../images/star-rating-sprite.png") repeat-x;
+  font-size: 0;
+  height: 21px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 110px;
+  /* margin: 0 auto; */
+  
+}
+ 
