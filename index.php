@@ -6,9 +6,13 @@
             
             <p>
                 This database includes some of the most popular apps available for mobile devices. 
-                The <a href="https://www.kaggle.com/tristan581/17k-apple-app-store-strategy-games">original 
-                dataset</a> can be found at the preceding link.
             </p>
+            
+            <h3>Acknowledgements &#65286; Sources</h3>
+            <ul>
+                <li><a href="https://www.kaggle.com/tristan581/17k-apple-app-store-strategy-games">original "17K Mobile Strategy Games" dataset</a></li>
+                <li>The <a href="https://codepen.io/Bluetidepro/pen/GkpEa">percentage based star rating</a> code is at the preceeding link.</li>
+            </ul>
             
 
             
