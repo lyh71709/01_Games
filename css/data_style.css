@@ -167,6 +167,8 @@ a.side:hover {color:#8a1737; }
     display: block;
 }
 
+/* Side Form formatting */
+
 .searchform {
     width: 250px;
     margin: 5px;
@@ -189,4 +191,26 @@ a.side:hover {color:#8a1737; }
     color: #d6d3d7;
     border: 1px solid #636263;
     border-radius: 0 5px 5px 0;
+}
+
+input[type="submit"]:hover {
+    background-color: #000;
+}
+
+input.search[type=text], select {
+    width: 200px;
+}
+
+input {
+    height: 40px;
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.free {
+    width: 245px;
+    border-radius: 5px;
+    font-size: 105%;
 }
