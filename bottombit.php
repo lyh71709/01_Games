@@ -17,6 +17,24 @@
 
             </form>
 
+            <br />
+            <hr />
+            <br />
+
+            <div class="advanced-frame">
+
+            <h2>Advanced Search</h2>
+
+            <form class="searchform" method="post" action="advanced.php" enctype="multipart/form-data">
+
+            <input class="adv" type="text" name="app_name" size="40" value="" placeholder="App Name / Title..."/>
+
+            <input class="adv" type="text" name="dev_name" size="40" value="" placeholder="Developer..."/>
+
+            <input class="submit advanced-button" type="submit" name="advanced" value="Search &nbsp; &#xf002;" />
+
+            </form>
+
             
         </div> <!-- / side bar -->
         
