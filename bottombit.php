@@ -92,6 +92,24 @@
             </div> <!-- / rating flex box -->
             
             <!-- Age -->
+            <div class="flex-container">
+                <div class="adv-txt">
+                    Age:
+                </div> <!-- / age label-->
+                
+                <div>
+                    <select class="search adv" name="age_more_less">
+                        <option value="" disabled>Choose...</option>
+                        <option value="at least">At Least</option>
+                        <option value="at most">At Most</option>
+                    </select>
+
+                </div> <!-- / age drop down-->
+                <div>
+                    <input class="adv" type="text" name="age" size="3" value="" placeholder=""/>
+                </div> <!-- / age amount -->
+
+            </div> <!-- / age flex box -->
 
             <!-- Search Button is below -->
             <input class="submit advanced-button" type="submit" name="advanced" value="Search &nbsp; &#xf002;" />
