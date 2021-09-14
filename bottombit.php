@@ -31,8 +31,6 @@
 
             <input class="adv" type="text" name="dev_name" size="40" value="" placeholder="Developer..."/>
 
-
-
             <!--- Genre Dropdown --->
 
             <select class="search adv" name="genre">
