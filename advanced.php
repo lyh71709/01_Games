@@ -10,7 +10,7 @@
         $cost_op = ">=";
         $cost = 0;
     }
-    else{
+    else {
         $cost_op = "<=";
     }
 
@@ -47,7 +47,7 @@
     }
     elseif($age_more_less=="at most") {
         $age_op = "<=";
-    }
+    } 
     else {
         $age_op = ">=";
     } // end age if / elseif / else
@@ -56,12 +56,12 @@
     JOIN genre ON (game_details.GenreID = genre.GenreID)
     JOIN developer ON (game_details.DeveloperID = developer.DeveloperID)
     WHERE `Name` LIKE '%$app_name%'
-    AND 'Developer' LIKE '%$developer%'
-    AND 'Genre' LIKE '%$genre%'
-    AND 'Price' $cost_op '$cost'
-    AND ('In App' = $in_app OR 'In App' = 0)
-    AND 'User Rating' $rate_op $rating
-    AND 'Age' $age_op $age
+    AND `Developer` LIKE '%$developer%'
+    AND `Genre` LIKE '%$genre%'
+    AND `Price` $cost_op '$cost'
+    AND (`In App` = $in_app OR `In App` = 0)
+    AND `User Rating` $rate_op $rating
+    AND `Age` $age_op $age
 
     ";
     $find_query = mysqli_query($db_connect, $find_sql);
