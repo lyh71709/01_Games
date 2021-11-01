@@ -30,11 +30,13 @@
         $rating = 0;
         $rating_more_less = "at least";
     }
-    elseif($rating_more_less=="at most") {
+
+    if($rating_more_less=="at most") {
         $rate_op = "<=";
     }
     else {
         $rate_op = ">=";
+
     } // end rating if / elseif / else
 
     // Age
@@ -43,13 +45,15 @@
 
     if ($age=="") {
         $age = 0;
-        $age_more_less = "<=";
+        $age_more_less = "at least";
     }
-    elseif($age_more_less=="at most") {
+
+    if($age_more_less=="at most") {
         $age_op = "<=";
     } 
     else {
         $age_op = ">=";
+
     } // end age if / elseif / else
 
     $find_sql = "SELECT * FROM `game_details` 

@@ -201,12 +201,29 @@ input.search[type=text], select {
     width: 200px;
 }
 
+/* puts radio buttons next to each other in add entry form */
+input[type="checkbox"] {
+    display: inline;
+    width: auto;
+}
+
+input[type="radio"] {
+    height: 0;
+    width: auto;
+    display: inline;
+}
+
 input {
     height: 40px;
     padding: 10px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+.adv-cost {
+    width: 90%;
+    margin-bottom: 5px;
 }
 
 select {

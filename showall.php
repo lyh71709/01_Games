@@ -3,7 +3,6 @@
     $find_sql = "SELECT * FROM `game_details` 
     JOIN genre ON (game_details.GenreID = genre.GenreID)
     JOIN developer ON (game_details.DeveloperID = developer.DeveloperID)
-    WHERE `Name` LIKE '%chess%'
     ";
     $find_query = mysqli_query($db_connect, $find_sql);
     $find_rs = mysqli_fetch_assoc($find_query);
