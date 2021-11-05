@@ -207,6 +207,7 @@ input[type="checkbox"] {
     width: auto;
 }
 
+/* puts radio buttons next to each other in add entry form */
 input[type="radio"] {
     height: 0;
     width: auto;
@@ -261,4 +262,10 @@ select {
     margin: auto;
     margin-right: 10px;
     margin-left: 10px;
+}
+
+/* Extra Add Entry Styling */
+.add-entry{
+    max-width: 550px;
+    margin: auto;
 }
