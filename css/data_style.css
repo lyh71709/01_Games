@@ -201,7 +201,7 @@ input.search[type=text], select {
     width: 200px;
 }
 
-/* puts radio buttons next to each other in add entry form */
+/* ensures that text is next to checkbox in advanced search form */
 input[type="checkbox"] {
     display: inline;
     width: auto;
@@ -210,8 +210,9 @@ input[type="checkbox"] {
 /* puts radio buttons next to each other in add entry form */
 input[type="radio"] {
     height: 0;
-    width: auto;
+    width: 40px;
     display: inline;
+
 }
 
 input {
@@ -227,6 +228,7 @@ input {
     margin-bottom: 5px;
 }
 
+/* Controls height of options in dropdown menus */
 select {
     height: 40px;
 }
@@ -268,4 +270,9 @@ select {
 .add-entry{
     max-width: 550px;
     margin: auto;
+}
+
+.add-field{
+    width: 95%;
+    margin-bottom: 5px;
 }

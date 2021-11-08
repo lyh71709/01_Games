@@ -2,7 +2,15 @@
 
     $app_name = mysqli_real_escape_string($db_connect, $_POST['app_name']);
     $developer = mysqli_real_escape_string($db_connect, $_POST['dev_name']);
+
+    if (isset($_POST['genre'])) {
     $genre = mysqli_real_escape_string($db_connect, $_POST['genre']);
+    }
+
+    else {
+    $genre = "";
+    }
+    
     $cost = mysqli_real_escape_string($db_connect, $_POST['cost']);
 
     // Cost Code (to handle when cost is not specified...)
