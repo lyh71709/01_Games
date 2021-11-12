@@ -209,7 +209,7 @@ input[type="checkbox"] {
 
 /* puts radio buttons next to each other in add entry form */
 input[type="radio"] {
-    height: 0;
+    height: auto;
     width: 40px;
     display: inline;
 

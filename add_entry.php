@@ -53,37 +53,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // if there are no errors
     if ($has_errors=="no") {
 
-        // Go to success page...
-        header('Location: add_success.php');
-        
-        // get developer ID if it exists...
-        $dev_sql = "SELECT * FROM `developer` WHERE `Developer` LIKE '$developer'";
-        $dev_query=mysqli_query($db_connect, $dev_sql);
-        $dev_rs=mysqli_fetch_assoc($dev_query);
-        $dev_count=mysqli_num_rows($dev_query);
+    // Go to success page...
+    header('Location: add_success.php');
+    
+    // get developer ID if it exists...
+    $dev_sql = "SELECT * FROM `developer` WHERE `Developer` LIKE '$developer'";
+    $dev_query=mysqli_query($db_connect, $dev_sql);
+    $dev_rs=mysqli_fetch_assoc($dev_query);
+    $dev_count=mysqli_num_rows($dev_query);
 
-        // if developer not already in developer table, add them and get the 'new' developerID
-        if ($dev_count>0) {
-            $developerID = $dev_rs['DeveloperID'];
-        }
+    // if developer not already in developer table, add them and get the 'new' developerID
+    if ($dev_count>0) {
+        $developerID = $dev_rs['DeveloperID'];
+    }
 
-        else{
-            $add_dev_sql="INSERT INTO `developer` (`DeveloperID`, `Developer`) VALUES (NULL, '$developer');";
-            $add_dev_query=mysqli_query($db_connect, $add_dev_sql);
+    else{
+        $add_dev_sql="INSERT INTO `developer` (`DeveloperID`, `Developer`) VALUES (NULL, '$developer');";
+        $add_dev_query=mysqli_query($db_connect, $add_dev_sql);
 
-            // Get developer ID
-            $newdev_sql="SELECT * FROM `developer` WHERE `Developer` LIKE '$developer'";
-            $newdev_query=mysqli_query($db_connect, $newdev_sql);
+        // Get developer ID
+        $newdev_sql="SELECT * FROM `developer` WHERE `Developer` LIKE '$developer'";
+        $newdev_query=mysqli_query($db_connect, $newdev_sql);
+        $newdev_rs=mysqli_fetch_assoc($newdev_query);
 
-            $developerID= $newdev_rs['DeveloperID'];
+        $developerID= $newdev_rs['DeveloperID'];
 
-        } // end adding developer to developer table
+    } // end adding developer to developer table
 
-        // Add entry to database
-        $addentry_sql="INSERT INTO `game_details` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`,
-        `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', '$subtitle', '$url', 
-        $genreID, $developerID, $age, $rating, $rate_count, $cost, $in_app, '$description');";
-        $addentry_query=mysqli_query($db_connect, $addentry_sql);
+    // Add entry to database
+    $addentry_sql="INSERT INTO `game_details` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`,
+    `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', '$subtitle', '$url', 
+    $genreID, $developerID, $age, $rating, $rate_count, $cost, $in_app, '$description');";
+    $addentry_query=mysqli_query($db_connect, $addentry_sql);
 
     } // end of 'no errors' if
 
@@ -115,16 +116,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ?>
                 <option value="" selected>Genre (Choose something)....</option>
                 <?php
-
             }
-
             else{
                 ?>
             <option value="<?php echo $genreID?>" selected></option>
             <?php
             }
             ?>
-            
             <!-- get options from database -->
             <?php
 
@@ -164,7 +162,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <b>In App Purchase</b>
                 <!-- defaults to 'yes' -->
                 <!-- NOTE: value in database is boolean, so 'no' becomes 0 and 'yes' becomes 1 -->
-                <input class="adv-txt" type="checkbox" name="in_app" value="0">Does it have In App Purchase
+
+                <?php
+                if($in_app==1) {
+                //Default value, 'Yes' is selected
+                    ?>
+                <input type="radio" name="in_app" value="1" checked="checked" />Yes
+                <input type="radio" name="in_app" value="0" />No
+                    <?php
+                } // end 'yes in_app' if
+
+                else{
+                    ?>
+                <input type="radio" name="in_app" value="1" />Yes
+                <input type="radio" name="in_app" value="0" checked="checked" />No
+                <?php
+                } // end 'in_app' else
+                ?>
                 
             </div>
 
