@@ -29,7 +29,7 @@
 
             <input class="adv" type="text" name="app_name" size="40" value="" placeholder="App Name / Title..."/>
 
-            <input class="adv" type="text" name="dev_name" size="40" value="" placeholder="Developer..."/>
+            <input class="adv" type="text" name="developer" size="40" value="" placeholder="Developer..."/>
 
             <!--- Genre Dropdown --->
 

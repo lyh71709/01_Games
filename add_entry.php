@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $genreID = mysqli_real_escape_string($db_connect, $_POST['genre']);
     // if GenreID, is not blank, get genre so that genre box does not lose its value if there are errors
-    if ($genre_ID != "") {
+    if ($genreID != "") {
         $genreitem_sql="";
         $genreitem_query=mysqli_query($db_connect, $genreitem_sql);
         $genreitem_rs=mysqli_fetch_assoc($genreitem_query);
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } // End genreID if
 
-    $developer = mysqli_real_escape_string($db_connect, $_POST['dev_name']);
+    $developer = mysqli_real_escape_string($db_connect, $_POST['developer']);
     $age = mysqli_real_escape_string($db_connect, $_POST['age']);
     $rating = mysqli_real_escape_string($db_connect, $_POST['rating']);
     $rate_count = mysqli_real_escape_string($db_connect, $_POST['count']);
@@ -49,12 +49,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = mysqli_real_escape_string($db_connect, $_POST['description']);
 
     // error checking will go here...
+
+    // Check App name is not blank
+    if ($app_name == "") {
+        $has_errors = "yes";
+        $app_error = "error-text";
+        $app_field = "form-error";
+    }
     
     // if there are no errors
     if ($has_errors=="no") {
 
+    // set up error field colours / visibility (no errors at first)
+    $app_error = "no-error";
+    
+    $app_field = "form-ok";
+
     // Go to success page...
-    header('Location: add_success.php');
+    // header('Location: add_success.php');
     
     // get developer ID if it exists...
     $dev_sql = "SELECT * FROM `developer` WHERE `Developer` LIKE '$developer'";
@@ -81,14 +93,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } // end adding developer to developer table
 
     // Add entry to database
-    $addentry_sql="INSERT INTO `game_details` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`,
-    `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', '$subtitle', '$url', 
-    $genreID, $developerID, $age, $rating, $rate_count, $cost, $in_app, '$description');";
+    
+    $addentry_sql="INSERT INTO `game_details` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`, `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', 'subtitle', 'url', genreID, developerID, age, rating, rate_count, cost, in_app, 'description');";
     $addentry_query=mysqli_query($db_connect, $addentry_sql);
+
+    // Get ID for next page
+    $getid_sql="SELECT * FROM `game_details` 
+    WHERE `Name` LIKE '$app_name' 
+    AND `Subtitle` LIKE '$subtitle' 
+    AND `URL` LIKE '$url'
+    AND `GenreID` = $genreID 
+    AND `DeveloperID` = $developerID 
+    AND `Age` = $age
+    AND `User Rating` = $rating 
+    AND `Rating Count` = $rate_count
+    AND `Price` = $cost
+    AND `In App` = $in_app";
+    $getid_query=mysqli_query($db_connect, $getid_sql);
+    $getid_rs=mysqli_fetch_assoc($getid_query);
+
+    $ID = $getid_rs['ID'];
+    $_SESSION['ID'] = $ID;
+
+    echo "ID: ".$ID;
 
     } // end of 'no errors' if
 
     echo "You pushed the button";
+
 }   // end of the button submitted code
 
 ?>
@@ -100,7 +132,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
             <!-- App Name (required) -->
-            <input class="add-field" type="text" name="app_name" value="<?php echo $app_name; ?>" placeholder="App Name (required) ..."/>
+            <div class="<?php echo $app_error; ?>">
+                Please fill in the 'App Name' field
+            </div>
+            <input class="add-field <?php echo $app_field; ?>" type="text" name="app_name" value="<?php echo $app_name; ?>" placeholder="App Name (required) ..."/>
 
             <!-- Subtitle (optiona) -->
             <input class="add-field" type="text" name="subtitle" size="40" value="<?php echo $subtitle; ?>" placeholder="Subtitle (optional)..."/>

@@ -1,7 +1,7 @@
 <?php include("topbit.php");
 
     $app_name = mysqli_real_escape_string($db_connect, $_POST['app_name']);
-    $developer = mysqli_real_escape_string($db_connect, $_POST['dev_name']);
+    $developer = mysqli_real_escape_string($db_connect, $_POST['developer']);
 
     if (isset($_POST['genre'])) {
     $genre = mysqli_real_escape_string($db_connect, $_POST['genre']);
