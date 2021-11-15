@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check age is a number, if it's blank, set it to 0
     if ($age == "" || $age == 0) {
         $age = 0;
-        $age_message = "Price has been set to 0 (ie: free)";
+        $age_message = "Age has been set to 0 (ie: free)";
         $age_error = "defaulted";
     }
 
