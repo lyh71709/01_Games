@@ -296,3 +296,7 @@ select {
 .error-text {
     color: darkred;
 }
+
+.defaulted {
+    color:darkgreen;
+}
